@@ -1,11 +1,11 @@
-<?php include("cabecalho.php");
+<?php include("cabecalho.php"); ?>
+<?php include("bd.php"); ?>
+<?php
 
   $categoria = $_POST["Categoria"];
   $descricao = $_POST["Descricao"];
 
   $query = "insert into CATEGORIA (CATEGORIA, DESCRICAO) values ('{$categoria}', '{$descricao}')";
-
-  $conexao = mysqli_connect ('localhost','root', '', 'ecomerce');
 
 if (mysqli_query($conexao, $query)){
 
