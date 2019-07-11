@@ -6,8 +6,12 @@ $query = "insert into PRODUTO (NOME, PRECO) values ('{$nome}', {$preco})";
 
 $conexao = mysqli_connect ('localhost','root', '', 'ecomerce');
 
-mysqli_query($conexao, $query);
+if (mysqli_query($conexao, $query)){
+  echo "<p class='alert-success'> O produto $nome, no valor $preco foi cadastrado!";
 
-echo "<p class='alert-success'> O produto $nome, no valor $preco foi cadastrado!";
+} else {
 
-include("rodape.php"); ?>
+echo "<p class='alert-danger'> Ocorrei um problema ao cadastrar o produto.</p>";
+}
+?>
+<?php include("rodape.php"); ?>

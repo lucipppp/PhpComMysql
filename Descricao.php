@@ -1,14 +1,19 @@
 <?php include("cabecalho.php");
 
-  $Categoria = $_POST["Categoria"];
-  $Descricao = $_POST["Descricao"];
+  $categoria = $_POST["Categoria"];
+  $descricao = $_POST["Descricao"];
 
   $query = "insert into CATEGORIA (CATEGORIA, DESCRICAO) values ('{$categoria}', '{$descricao}')";
 
   $conexao = mysqli_connect ('localhost','root', '', 'ecomerce');
 
-  mysqli_query($conexao, $query);
+if (mysqli_query($conexao, $query)){
 
-echo "<p class='alert-success'> O produto $Categoria, $Descricao foi cadastrado(a)!";
+echo "<p class='alert-success'> A categoria $categoria, com a $descricao foi cadastrado(a)!";
 
-include("rodape.php"); ?>
+} else {
+
+  echo "<p class='alert-danger'> Ocorreu um problema na categoria.</p>";
+  }
+  ?>
+  <?php include("rodape.php"); ?>
