@@ -2,12 +2,16 @@
 <?php include("bd.php"); ?>
 <?php
 
+function insereCategoria($conexao,$categoria, $descricao){
+  $query = "insert into CATEGORIA (NOME, DESCRICAO) values ('{$categoria}', '{$descricao}')";
+  $resultadoDoInsere = mysqli_query($conexao, $query);
+  return $resultadoDoInsere;
+
+}
   $categoria = $_POST["Categoria"];
   $descricao = $_POST["Descricao"];
 
-  $query = "insert into CATEGORIA (CATEGORIA, DESCRICAO) values ('{$categoria}', '{$descricao}')";
-
-if (mysqli_query($conexao, $query)){
+if(insereCategoria($conexao, $categoria, $descricao)){
 
 echo "<p class='alert-success'> A categoria $categoria, com a $descricao foi cadastrado(a)!";
 
